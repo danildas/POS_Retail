@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/theme1/titlebar_background.png</file>
+        <file>images/theme1/containerBg.png</file>
+        <file>images/theme1/groupDefaultImage.png</file>
+        <file>images/theme1/groupNavLeft.png</file>
+        <file>images/theme1/groupNavRight.png</file>
+        <file>images/theme1/itemButton.png</file>
+        <file>images/theme1/itemDefaultImage.png</file>
+    </qresource>
+</RCC>

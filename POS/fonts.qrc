@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fonts/Nexa Bold.otf</file>
+        <file>fonts/Nexa Light.otf</file>
+        <file>fonts/Adequate-ExtraLight.ttf</file>
+        <file>fonts/aileron/Aileron-Thin.otf</file>
+        <file>fonts/aileron/Aileron-Light.otf</file>
+        <file>fonts/aileron/Aileron-Regular.otf</file>
+    </qresource>
+</RCC>

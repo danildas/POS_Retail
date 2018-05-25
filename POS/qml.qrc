@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ItemDelegate.qml</file>
+        <file>GroupDelegate.qml</file>
+        <file>SubGroupDelegate.qml</file>
+        <file>OrderScreen.qml</file>
+        <file>GroupButtonStyle.qml</file>
+        <file>TitleBar.qml</file>
+        <file>MenuArea.qml</file>
+        <file>StatusBar.qml</file>
+        <file>BillDisplayArea.qml</file>
+        <file>BillDelegate.qml</file>
+        <file>ActionButtonArea.qml</file>
+        <file>POS_Button.qml</file>
+        <file>POS_FunctionButton.qml</file>
+        <file>GroupDisplayArea.qml</file>
+        <file>ItemDisplayArea.qml</file>
+        <file>PayModesDisplayArea.qml</file>
+        <file>OrderScreen1.qml</file>
+        <file>POS_HomeButton.qml</file>
+        <file>HomeScreen.qml</file>
+        <file>PaymentScreen.qml</file>
+        <file>POS_KeypadButton.qml</file>
+        <file>Settings.qml</file>
+    </qresource>
+</RCC>
