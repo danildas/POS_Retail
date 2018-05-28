@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     paytypeviewmodel.cpp \
     printermaster.cpp \
     usermaster.cpp \
-    rolemaster.cpp
+    rolemaster.cpp \
+    taxmaster.cpp
 
 RESOURCES += qml.qrc \
     images.qrc \
@@ -46,4 +47,5 @@ HEADERS += \
     paytypeviewmodel.h \
     printermaster.h \
     usermaster.h \
-    rolemaster.h
+    rolemaster.h \
+    taxmaster.h

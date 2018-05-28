@@ -10,6 +10,7 @@
 #include "printermaster.h"
 #include "rolemaster.h"
 #include "usermaster.h"
+#include "taxmaster.h"
 
 #include <QQmlContext>
 #include <QDebug>
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
     PrinterMaster printerM;
     UserMaster userM;
     RoleMaster roleM;
+    TaxMaster taxM;
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("displayModelManager", &displayModelManager);
@@ -42,6 +44,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("printerMaster",       &printerM);
     engine.rootContext()->setContextProperty("userMaster",          &userM);
     engine.rootContext()->setContextProperty("roleMaster",          &roleM);
+    engine.rootContext()->setContextProperty("taxMaster",           &taxM);
 
     PayTypeViewModel payTypeViewModel;
     engine.rootContext()->setContextProperty("payTypeViewModel",      &payTypeViewModel);

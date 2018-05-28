@@ -20,6 +20,242 @@ Item {
         height: parent.height
 
         Tab {
+            id: idGSTTab
+            title: "Tax"
+
+            Item {
+                id: idItemTax
+                width: parent.width
+                height: parent.height
+                anchors.top: parent.top
+
+                Rectangle {
+                    id: idRectangleTax
+                    width: idItemTax.width
+                    height: idItemTax.height/1.5
+                    border.color: "#E3E8EC"
+                    border.width: 2
+                    radius: 5
+                    anchors {
+                        top: idItemTax.top
+                        left: idItemTax.left
+                        right: idItemTax.right
+                        bottom: idItemTax.bottom
+                        bottomMargin: 20
+                        topMargin: 20
+                        leftMargin: 10
+                        rightMargin: 10
+                    }
+
+                        Text {
+                            id: idtxtCGST
+                            width: idRectangleTax.width/2
+                            height: idRectangleTax.height/12
+                            text: qsTr("CGST")
+                            font.family: idFont.name
+                            font.pixelSize: 15
+                            anchors{
+                                top: idRectangleTax.top
+                                left: idRectangleTax.left
+                                topMargin: 20
+                                leftMargin: 50
+                                 }
+                             }
+
+                        TextField {
+                            id: idTxtFieldCGST
+                            width: idRectangleTax.width/2
+                            height: idRectangleTax.height/12
+                            font.family: "Courier"
+                            placeholderText: "CGST Percent"
+                           // readOnly: true
+                            states: [
+                                State {
+                                    name: "CGST"
+                                    PropertyChanges { target: idTxtFieldCGST; readOnly: false }
+                                }]
+                            anchors{
+                                 top: idRectangleTax.top
+                                 left: idtxtCGST.right
+                                 right: idRectangleTax.right
+                                 topMargin: 20
+                                 rightMargin: 50
+                                 }
+                        }
+
+                        Text {
+                            id: idtxtSGST
+                            width: idRectangleTax.width/2
+                            height: idRectangleTax.height/12
+                            text: qsTr("CGST")
+                            font.family: idFont.name
+                            font.pixelSize: 15
+                            anchors{
+                                top: idtxtCGST.bottom
+                                left: idRectangleTax.left
+                                topMargin: 10
+                                leftMargin: 50
+                                 }
+                             }
+                        TextField {
+                            id: idTxtFieldSGST
+                            width: idRectangleTax.width/2
+                            height: idRectangleTax.height/12
+                            font.family: "Courier"
+                            placeholderText: "SGST Percent"
+                           // readOnly: true
+                            states: [
+                                State {
+                                    name: "SGST"
+                                    PropertyChanges { target: idTxtFieldSGST; readOnly: false }
+                                }]
+                            anchors {
+                                top: idTxtFieldCGST.bottom
+                                left: idtxtSGST.right
+                                right: idRectangleTax.right
+                                topMargin: 10
+                                rightMargin: 50
+                            }
+                        }
+
+                        Rectangle {
+                            id: idRectangleInside
+                            width: idRectangleTax.width
+                            height: idRectangleTax.height/3
+                            color: "#E3E8EC"
+                            radius: 5
+                            anchors {
+                               bottom: idRectangleTax.bottom
+                               left: idRectangleTax.left
+                               right: idRectangleTax.right
+                               leftMargin: 5
+                               rightMargin: 5
+                               bottomMargin: 5
+                            }
+
+
+                           /* Button {
+                                id: idPrevButton
+                                anchors{
+                                    top: idRectangleInside.top
+                                    left: idRectangleInside.left
+                                    topMargin: idRectangleInside.height/6
+                                    leftMargin: idRectangleInside.width/45
+                                }
+                                background: POS_FunctionButton {
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                    text: "Prev"
+                                }
+                            }
+
+                            Button {
+                                id: idNextButton
+                                anchors{
+                                    top: idRectangleInside.top
+                                    left: idPrevButton.right
+                                    topMargin: idRectangleInside.height/6
+                                    leftMargin: idRectangleInside.width/8.5
+                                }
+                                background: POS_FunctionButton {
+                                    text: "Next"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }*/
+                            Button {
+                                id: idNewButton
+                                anchors{
+                                    top: idRectangleInside.top
+                                    right: idEditButton.left
+                                    topMargin: idRectangleInside.height/6
+                                    rightMargin: idRectangleInside.width/8.5
+
+                                }
+                                background: POS_FunctionButton {
+                                    text: "New"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }
+                            Button {
+                                id: idEditButton
+                                anchors{
+                                    top: idRectangleInside.top
+                                    right: idDeleteButton.left
+                                    topMargin: idRectangleInside.height/6
+                                   rightMargin: idRectangleInside.width/8.5
+                                }
+                                background: POS_FunctionButton {
+                                    text: "Edit"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }
+                            Button {
+                                id: idDeleteButton
+                                anchors{
+                                    top: idRectangleInside.top
+                                    right: idRectangleInside.right
+                                    rightMargin: idRectangleInside.width/8
+                                    topMargin: idRectangleInside.height/6
+                                }
+                                background: POS_FunctionButton {
+                                    text: "Delete"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }
+                            Button {
+                                id: idClearButton
+                                anchors{
+                                    top: idEditButton.bottom
+                                    right: idSaveButton.left
+                                    topMargin: idRectangleInside.height/4.5
+                                    rightMargin: idRectangleInside.width/8.5
+                                }
+                                background: POS_FunctionButton {
+                                    text: "Clear"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }
+                            Button {
+                                id: idSaveButton
+                                anchors{
+                                    top: idDeleteButton.bottom
+                                    right: idRectangleInside.right
+                                    topMargin: idRectangleInside.height/4.5
+                                    rightMargin: idRectangleInside.width/8
+                                }
+                                background: POS_FunctionButton {
+                                    text: "Save"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                    onClicked: { taxMaster.saveTax(idTxtFieldSGST.text,idTxtFieldCGST.text)
+                                    }
+                                }
+                            }
+                            Button {
+                                id: idUpdateButton
+                                anchors{
+                                    top: idDeleteButton.bottom
+                                    right: idRectangleInside.right
+                                    topMargin: idRectangleInside.height/4.5
+                                    rightMargin: idRectangleInside.width/8
+                                }
+                                visible: false
+                                background: POS_FunctionButton {
+                                    text: "Update"
+                                    width: idRectangleInside.width/8
+                                    height: idRectangleInside.height/3
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        Tab {
             id: idCostCenterTab
             title: "Cost Center"
         }
@@ -34,7 +270,7 @@ Item {
             title: "Printer"
 
             Item {
-                id:idRoot
+                id: idRoot
                 width: parent.width
                 height: parent.height
                 anchors.top: parent.top

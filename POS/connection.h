@@ -16,7 +16,7 @@ static bool createConnection()
 #ifdef Q_OS_MAC
     db.setDatabaseName("/Users/abinjoseph/Workspace/Qt/Samples/POS/POS.db");
 #else
-    db.setDatabaseName("F:/Work/ProjectCode/POS.db"); //"E:/WorkSpace/Study/MyWorks/20170106/POS.db");
+    db.setDatabaseName("F:/Work/ProjectCode/POS_Retail/POS.db"); //"E:/WorkSpace/Study/MyWorks/20170106/POS.db");
 #endif
 
     if (!db.open())
