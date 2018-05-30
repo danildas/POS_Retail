@@ -64,8 +64,8 @@ Item {
         id: idDelegate
         Rectangle {
             id: idComponentRectangle
-            width: 100
-            height: 100
+            width: idGroupBackground.width / 3
+            height: idGroupBackground.height
             property variant modelData: model
 
             Text {

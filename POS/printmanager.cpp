@@ -6,6 +6,7 @@
 #include <QPrintDialog>
 #include <QQuickTextDocument>
 #include "settingsmodel.h"
+#include <ctime>
 
 PrintManager::PrintManager(QObject *parent) : QObject(parent)
 {
@@ -136,9 +137,13 @@ QVariantMap PrintManager::printBill(qint32 billNumber)
         errorMessage = query.lastError().text();
     }
 
+    time_t now = time(0);
+
+    QString dt = ctime(&now);
+
     QString header, body, footer, htmlString;
 
-     header = "<html>"
+        header = "<html>"
                           "<head>"
                           "<style>"
                           "table { border-collapse: collapse;"
@@ -151,11 +156,19 @@ QVariantMap PrintManager::printBill(qint32 billNumber)
 
                          " tr:hover { background-color:#f5f5f5; }"
                          "</style>"
-                         "<tr> <h2>Hotal</h2></tr>"
+                         "</script></tr>"
                          "</head>"
                          "<table>"
-                         "<tr> <th>Name</th> <th>Quantity</th> <th>Price</th> <th>Total </th></tr>"
-                         "</table> </html>";
+                         "<tr> <td></td> <td></td><h2>Hotal</h2></tr>"
+                         "<tr>-----</tr>"
+                         "<tr> <th> Bill Number</th><td></td><th> "+ QString::number(billNumber) + " </th> </tr>"
+                         "<tr> <th> Date:</th><td></td><td>"+ dt +"</td> </tr>"
+                         "<tr> </tr>"
+                         "<tr> <th>Name</th> "
+                               "<th>Quantity</th> "
+                               "<th>Price</th> "
+                               "<th>Total </th>"
+                         "</tr>";
     htmlString.append(header);
 
     if (query.exec("SELECT Name, Quantity, Price, IsParentItem FROM BillItems "
@@ -172,32 +185,41 @@ QVariantMap PrintManager::printBill(qint32 billNumber)
             priceStr = QString::number(price/monetaryUnitFraction);
             totalStr = QString::number(total/monetaryUnitFraction);
 
-        body = "<html><table>"
-                        "<tr> <td>"+name+"</td> <td>"+QString::number(quantity)+"</td> <td>"+QString::number(price)+"</td> <td>"+QString::number(total)+"</td> </tr>"
-                      "</table></html>";
+        body = "<tr> "
+                     "<td>"+name+"</td> "
+                     "<td>"+QString::number(quantity)+"</td> "
+                     "<td>"+QString::number(price)+"</td> "
+                     "<td>"+QString::number(total)+"</td> "
+               "</tr>";
         htmlString.append(body);
         }
     }
 
-    QString totalAmount;
+//    QString totalAmount;
+    qint32 totalAmount;
     QSqlQuery query1;
     query1.exec("SELECT Total FROM 'BILLHEADER' WHERE billNumber = " + QString::number(billNumber) + "");
     query1.next();
-    totalAmount = query1.value(0).toString();
+    totalAmount = query1.value(0).toInt();
 
-    QString SGST,CGST;
+    qint32 SGST,CGST;
+    QString SGSTTotal,CGSTtotal,TotalAmt;
     QSqlQuery query2;
     query2.exec("SELECT SGST,CGST FROM 'TAX'");
     query2.next();
-    SGST = query2.value(0).toString();
-    CGST = query2.value(1).toString();
+    SGST = query2.value(0).toInt();
+    CGST = query2.value(1).toInt();
 
-    footer = "<html><table> <tr><th>Ticket Total</th> <td>"+ totalAmount + "</td> </tr>"
-                 "<tr><td>TAX: CGST</td> <td>"+SGST+"%</td> <th> </th> </tr>"
-                  "<tr><td>TAX: SGST</td> <td>"+CGST+"%</td> <th> </th> </tr>"
-                  "<tr><td>Total</td> <th> </th> </tr>"
-                  "<tr> <th>BillNumber:</th> <td>"+ QString::number(billNumber) + "</td><tr>"
-                   "</table></html>";
+    SGSTTotal = QString::number((totalAmount*SGST)/monetaryUnitFraction);
+    CGSTtotal = QString::number((totalAmount*CGST)/monetaryUnitFraction);
+
+ //   TotalAmt = QString::number(CGST+totalAmount);
+
+    footer = "<tr><th>Ticket Total</th> <td></td> <td></td> <th>"+ QString::number(totalAmount) + "</th> </tr>"
+                  "<tr><td>TAX: CGST</td> <td></td> <td>"+QString::number(SGST)+"%</td> <th>"+ SGSTTotal +"</th> </tr>"
+                  "<tr><td>TAX: SGST</td> <td></td> <td>"+QString::number(CGST)+"%</td> <th> "+ CGSTtotal +" </th> </tr>"
+                  "<tr><th>Total</th> <td></td> <td></td> <th> "+ TotalAmt +"  </th> </tr>"
+                  "</table></html>";
     htmlString.append(footer);
 
     QTextDocument doc;

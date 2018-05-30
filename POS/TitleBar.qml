@@ -54,4 +54,56 @@ Item {
             }
         }
     }
+
+    Text {
+        id: idTotal
+        text: qsTr("Total :")
+        color: "white"
+        height: parent.height
+        font.family: idFont.name
+        font.pixelSize: 14
+        verticalAlignment: Text.AlignVCenter
+
+        anchors.right: idLogOut.left
+        anchors.rightMargin: 25
+    }
+
+    Text {
+        id: idSgst
+        text: qsTr("SGST :")
+        color: "white"
+        height: parent.height
+        font.family: idFont.name
+        font.pixelSize: 14
+        verticalAlignment: Text.AlignVCenter
+
+        anchors.right: idTotal.left
+        anchors.rightMargin: 25
+    }
+
+    Text {
+        id: idCgst
+        text: qsTr("CGST :")
+        color: "white"
+        height: parent.height
+        font.family: idFont.name
+        font.pixelSize: 14
+        verticalAlignment: Text.AlignVCenter
+
+        anchors.right: idSgst.left
+        anchors.rightMargin: 25
+    }
+
+    Text {
+        id: idSubToatal
+        text: qsTr("SubToatal :")
+        color: "white"
+        height: parent.height
+        font.family: idFont.name
+        font.pixelSize: 14
+        verticalAlignment: Text.AlignVCenter
+
+        anchors.right: idCgst.left
+        anchors.rightMargin: 25
+    }
 }

@@ -51,7 +51,7 @@ ApplicationWindow {
             width: parent.width
         }
 
-        PaymentScreen {
+      /*  PaymentScreen {
             id: idPaymentScreen
             anchors.top: idTitleBar.bottom
             anchors.bottom: idStatusBar.top
@@ -60,7 +60,7 @@ ApplicationWindow {
             onBackClicked: {
                 idRoot.state = "sales"
             }
-        }
+        }*/
 
         OrderScreen1 {
             id: idOrderScreen
@@ -109,12 +109,12 @@ ApplicationWindow {
 //                PropertyChanges {
 //                    target: idOrderScreen; x:0
 //                }
-               PropertyChanges { target: idPaymentScreen; x:-idRoot.width }
+               //PropertyChanges { target: idPaymentScreen; x:-idRoot.width }
             },
-            State {
+          /*  State {
                 name: "payment"
                 PropertyChanges { target: idPaymentScreen }
-            },
+            },*/
             State {
                 name: "settings"
                 PropertyChanges { target: idSettingsScreen }
@@ -123,7 +123,7 @@ ApplicationWindow {
         ]
 
         transitions: [
-            Transition {
+          /*  Transition {
                 from: "sales"
                 to: "payment"
 
@@ -140,7 +140,7 @@ ApplicationWindow {
                         to:0; from: idRoot.width
                     }
                 }
-            },
+            },*/
             Transition {
                 from: "home"
                 to: "sales"
@@ -165,7 +165,7 @@ ApplicationWindow {
                     }
                 }
             },
-            Transition {
+          /*  Transition {
                 to: "sales"
                 from: "payment"
 
@@ -182,7 +182,7 @@ ApplicationWindow {
                         from: 0; to: idRoot.width
                     }
                 }
-            },
+            },*/
             Transition {
                 to: "home"
                 from: "sales"
@@ -218,11 +218,11 @@ ApplicationWindow {
                          to:0; from:idRoot.width
                     }
 
-                    NumberAnimation {
+                   /* NumberAnimation {
                         target: idPaymentScreen; property: "x"
                         duration: 100; //easing.type: Easing.InOutQuad
                          to: -idRoot.width; from:0
-                    }
+                    }*/
 
                     NumberAnimation {
                         target:idOrderScreen ; property: "x"

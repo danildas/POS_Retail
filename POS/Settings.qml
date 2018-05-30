@@ -68,7 +68,7 @@ Item {
                             height: idRectangleTax.height/12
                             font.family: "Courier"
                             placeholderText: "CGST Percent"
-                           // readOnly: true
+                            readOnly: true
                             states: [
                                 State {
                                     name: "CGST"
@@ -87,7 +87,7 @@ Item {
                             id: idtxtSGST
                             width: idRectangleTax.width/2
                             height: idRectangleTax.height/12
-                            text: qsTr("CGST")
+                            text: qsTr("SGST")
                             font.family: idFont.name
                             font.pixelSize: 15
                             anchors{
@@ -97,13 +97,14 @@ Item {
                                 leftMargin: 50
                                  }
                              }
+
                         TextField {
                             id: idTxtFieldSGST
                             width: idRectangleTax.width/2
                             height: idRectangleTax.height/12
                             font.family: "Courier"
                             placeholderText: "SGST Percent"
-                           // readOnly: true
+                            readOnly: true
                             states: [
                                 State {
                                     name: "SGST"
@@ -133,36 +134,6 @@ Item {
                                bottomMargin: 5
                             }
 
-
-                           /* Button {
-                                id: idPrevButton
-                                anchors{
-                                    top: idRectangleInside.top
-                                    left: idRectangleInside.left
-                                    topMargin: idRectangleInside.height/6
-                                    leftMargin: idRectangleInside.width/45
-                                }
-                                background: POS_FunctionButton {
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
-                                    text: "Prev"
-                                }
-                            }
-
-                            Button {
-                                id: idNextButton
-                                anchors{
-                                    top: idRectangleInside.top
-                                    left: idPrevButton.right
-                                    topMargin: idRectangleInside.height/6
-                                    leftMargin: idRectangleInside.width/8.5
-                                }
-                                background: POS_FunctionButton {
-                                    text: "Next"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
-                                }
-                            }*/
                             Button {
                                 id: idNewButton
                                 anchors{
@@ -176,6 +147,10 @@ Item {
                                     text: "New"
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
+                                    onClicked: {
+                                        idTxtFieldSGST.state = "SGST"
+                                        idTxtFieldCGST.state = "CGST"
+                                    }
                                 }
                             }
                             Button {
@@ -190,6 +165,10 @@ Item {
                                     text: "Edit"
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
+                                    onClicked: {
+                                        idSaveButton.visible = false
+                                        idUpdateButton.visible = true
+                                    }
                                 }
                             }
                             Button {
@@ -204,6 +183,7 @@ Item {
                                     text: "Delete"
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
+                                    onClicked: taxMaster.deleteTax()
                                 }
                             }
                             Button {
@@ -215,9 +195,14 @@ Item {
                                     rightMargin: idRectangleInside.width/8.5
                                 }
                                 background: POS_FunctionButton {
-                                    text: "Clear"
+                                    text: "Refresh"
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
+                                    onClicked:  { taxMaster.getTax()
+                                        idTxtFieldSGST.text = taxMaster.sgst
+                                        idTxtFieldCGST.text = taxMaster.cgst
+                                    }
+
                                 }
                             }
                             Button {
@@ -233,6 +218,8 @@ Item {
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
                                     onClicked: { taxMaster.saveTax(idTxtFieldSGST.text,idTxtFieldCGST.text)
+                                        idTxtFieldSGST.readOnly = true
+                                        idTxtFieldCGST.readOnly = true
                                     }
                                 }
                             }
@@ -249,6 +236,13 @@ Item {
                                     text: "Update"
                                     width: idRectangleInside.width/8
                                     height: idRectangleInside.height/3
+                                    onClicked: {
+                                        taxMaster.editTax(idTxtFieldSGST.text,idTxtFieldCGST.text)
+                                        idSaveButton.visible = false
+                                        idUpdateButton.visible = true
+                                        idTxtFieldSGST.readOnly = true
+                                        idTxtFieldCGST.readOnly = true
+                                    }
                                 }
                             }
                         }

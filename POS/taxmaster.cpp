@@ -9,6 +9,15 @@ TaxMaster::TaxMaster(QObject *parent) : QSqlQueryModel (parent)
 
 }
 
+bool TaxMaster:: getTax()
+{
+    QSqlQuery query;
+    query.exec("SELECT SGST,CGST FROM 'TAX'");
+    query.next();
+    setSgst(query.value(0).toString());
+    setCgst(query.value(1).toString());
+}
+
 bool TaxMaster:: saveTax(int SGST, int CGST)
 {
     QSqlQuery query;
@@ -35,6 +44,36 @@ bool TaxMaster:: deleteTax()
 bool TaxMaster:: editTax(int SGST, int CGST)
 {
     qDebug()<< "Edit Invoked";
-   // QString query =("UPDATE 'TAX' SET SGST = '"+ SGST +"', CGST = '"+ CGST +"' ");
-  //  this->setQuery(query);
+    QString query =("UPDATE 'TAX' SET SGST = '"+ QString::number(SGST) +"', CGST = '"+ QString::number(CGST) +"' ");
+    this->setQuery(query);
+}
+
+
+QString TaxMaster::sgst()
+{
+    return m_sgst;
+}
+
+void TaxMaster::setSgst(QString sgst)
+{
+    if(sgst != m_sgst)
+    {
+        m_sgst = sgst;
+        emit sgstChanged();
+    }
+}
+
+QString TaxMaster::cgst()
+{
+    return m_cgst;
+}
+
+void TaxMaster::setCgst(QString cgst)
+{
+    if(cgst != m_cgst)
+    {
+        m_cgst = cgst;
+        emit cgstChanged();
+    }
+
 }

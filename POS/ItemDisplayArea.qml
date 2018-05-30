@@ -215,10 +215,20 @@ Item {
             Text {
                 text: model.name
                 font.family: idFontBold.name
-                anchors{
+                anchors {
                     top: idRectangleText.top
                     left: idRectangleText.left
                     leftMargin: idItemBackground.width / 20
+                    topMargin: idItemBackground.height / 60
+                }
+            }
+            Text {
+                id: idItemPrice
+                text: "₹"+ model.price
+                anchors {
+                    top: idRectangleText.top
+                    right: idRectangleText.right
+                    rightMargin: idItemBackground.width / 10
                     topMargin: idItemBackground.height / 60
                 }
             }
