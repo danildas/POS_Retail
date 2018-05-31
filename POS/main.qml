@@ -27,6 +27,12 @@ ApplicationWindow {
     Item {
         id: settings
         property int monetaryUnitFraction: 100
+
+        property double subtotal: 0.0
+        property double sgst: 0.0
+        property double cgst: 0.0
+        property double total: 0.0
+        property int billNo: 0
     }
 
     Item {

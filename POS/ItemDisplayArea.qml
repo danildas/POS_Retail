@@ -235,7 +235,19 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: idItemListView.currentIndex = index
+                onClicked: {
+                            idItemListView.currentIndex = index
+
+                            taxMaster.getTax();
+                            settings.subtotal = settings.subtotal + model.price
+                            settings.sgst = (settings.subtotal * taxMaster.sgst ) / 100;
+                            settings.cgst = (settings.subtotal * taxMaster.cgst ) / 100;
+                            settings.total = settings.subtotal + settings.sgst + settings.cgst;
+
+                            taxMaster.getBillNumber();
+                            settings.billNo = taxMaster.billNo;
+                    console.log("total value",settings.subtotal)
+                }
             }
         }
     }

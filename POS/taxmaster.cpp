@@ -48,13 +48,35 @@ bool TaxMaster:: editTax(int SGST, int CGST)
     this->setQuery(query);
 }
 
+bool TaxMaster:: getBillNumber()
+{
+    QSqlQuery query;
+    query.exec("SELECT billNumber FROM 'BILLHEADER' WHERE billNumber=(SELECT max(billNumber) FROM 'BILLHEADER')");
+    query.next();
+    setBillNo(query.value(0).toInt());
+}
 
-QString TaxMaster::sgst()
+
+int TaxMaster:: billNo()
+{
+    return m_billNo;
+}
+
+void TaxMaster:: setBillNo(int billNo)
+{
+    if(billNo != m_billNo)
+    {
+        m_billNo = billNo + 1;
+        emit billNoChanged();
+    }
+}
+
+QString TaxMaster:: sgst()
 {
     return m_sgst;
 }
 
-void TaxMaster::setSgst(QString sgst)
+void TaxMaster:: setSgst(QString sgst)
 {
     if(sgst != m_sgst)
     {
@@ -63,12 +85,12 @@ void TaxMaster::setSgst(QString sgst)
     }
 }
 
-QString TaxMaster::cgst()
+QString TaxMaster:: cgst()
 {
     return m_cgst;
 }
 
-void TaxMaster::setCgst(QString cgst)
+void TaxMaster:: setCgst(QString cgst)
 {
     if(cgst != m_cgst)
     {

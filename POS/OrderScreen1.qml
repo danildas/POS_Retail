@@ -129,6 +129,12 @@ Item {
         }
 
         onClear: {
+            settings.subtotal = 0.0;
+            settings.sgst = 0.0;
+            settings.cgst = 0.0;
+            settings.total = 0.0;
+            settings.billNo = 0;
+
             var resultMap = billManager.clear();
             console.log(resultMap.status, resultMap.message)
         }

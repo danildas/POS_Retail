@@ -213,7 +213,7 @@ QVariantMap PrintManager::printBill(qint32 billNumber)
     SGSTTotal = QString::number((totalAmount*SGST)/monetaryUnitFraction);
     CGSTtotal = QString::number((totalAmount*CGST)/monetaryUnitFraction);
 
- //   TotalAmt = QString::number(CGST+totalAmount);
+//     TotalAmt = QString::number(SGSTTotal);
 
     footer = "<tr><th>Ticket Total</th> <td></td> <td></td> <th>"+ QString::number(totalAmount) + "</th> </tr>"
                   "<tr><td>TAX: CGST</td> <td></td> <td>"+QString::number(SGST)+"%</td> <th>"+ SGSTTotal +"</th> </tr>"

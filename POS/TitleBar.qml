@@ -24,7 +24,7 @@ Item {
 
     Text {
         id: idBillTitle
-        text: "#"
+        text: "#" + settings.billNo
         color: "white"
         height: parent.height
         font.family: idFont.name
@@ -57,7 +57,7 @@ Item {
 
     Text {
         id: idTotal
-        text: qsTr("Total :")
+        text: qsTr("Total :") + settings.total
         color: "white"
         height: parent.height
         font.family: idFont.name
@@ -70,7 +70,7 @@ Item {
 
     Text {
         id: idSgst
-        text: qsTr("SGST :")
+        text: qsTr("SGST :") + settings.sgst
         color: "white"
         height: parent.height
         font.family: idFont.name
@@ -83,7 +83,7 @@ Item {
 
     Text {
         id: idCgst
-        text: qsTr("CGST :")
+        text: qsTr("CGST :") + settings.cgst
         color: "white"
         height: parent.height
         font.family: idFont.name
@@ -96,7 +96,7 @@ Item {
 
     Text {
         id: idSubToatal
-        text: qsTr("SubToatal :")
+        text: qsTr("SubToatal :") + settings.subtotal
         color: "white"
         height: parent.height
         font.family: idFont.name
