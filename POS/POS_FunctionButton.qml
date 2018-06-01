@@ -15,14 +15,14 @@ Rectangle {
 
     Gradient {
         id: idGradient1
-        GradientStop { position: 0.0; color: "#c7c9cc" }
-        GradientStop { position: 1.0; color: "#47494c" }
+        GradientStop { position: 0.0; color: "#05b8c1" } //#c7c9cc
+        GradientStop { position: 1.0; color: "#152f30" } //#47494c
     }
 
     Gradient {
         id: idGradient2
-        GradientStop { position: 0.0; color: "#47494c" }
-        GradientStop { position: 1.0; color: "#c7c9cc" }
+        GradientStop { position: 0.0; color: "#152f30" }
+        GradientStop { position: 1.0; color: "#05b8c1" }
     }
 
     Text {

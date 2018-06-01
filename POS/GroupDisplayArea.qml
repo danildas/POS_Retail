@@ -20,11 +20,11 @@ Item {
         anchors.fill: parent
         radius: 2 //10
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#ebebec" }
-            GradientStop { position: 1.0; color: "#e3e8ec" }
+            GradientStop { position: 0.0; color: "#3ad0d8" }// "#ebebec" }
+            GradientStop { position: 1.0; color: "#4ad8e0" }// "#e3e8ec" }
         }
 
-        border.color: "#d2d4d5"
+        border.color: "#188f96" //"#d2d4d5"
         border.width: 1
     }
 
@@ -32,8 +32,7 @@ Item {
         id: idGroupList
         anchors.fill: idGroupBackground
         anchors.margins: 10
-        anchors.leftMargin: 5
-        anchors.rightMargin: height * 0.9
+        anchors.rightMargin: height * 0.6
         orientation: Qt.Horizontal
         clip: true
         //highlightMoveDuration: 10

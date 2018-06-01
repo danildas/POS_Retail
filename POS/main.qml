@@ -254,7 +254,7 @@ ApplicationWindow {
                          to:-idRoot.width ; from:0
                 }
             }
-            },
+            }/*,
             Transition {
                 from:"payment"
                 to: "home"
@@ -272,7 +272,7 @@ ApplicationWindow {
                          to:-idRoot.width ; from:0
                 }
             }
-            }
+            }*/
         ]
 
         onWidthChanged: {

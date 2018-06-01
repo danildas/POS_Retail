@@ -203,22 +203,22 @@ QVariantMap PrintManager::printBill(qint32 billNumber)
     totalAmount = query1.value(0).toInt();
 
     qint32 SGST,CGST;
-    QString SGSTTotal,CGSTtotal,TotalAmt;
+    qint32 SGSTTotal,CGSTTotal,TotalTax;
     QSqlQuery query2;
     query2.exec("SELECT SGST,CGST FROM 'TAX'");
     query2.next();
     SGST = query2.value(0).toInt();
     CGST = query2.value(1).toInt();
 
-    SGSTTotal = QString::number((totalAmount*SGST)/monetaryUnitFraction);
-    CGSTtotal = QString::number((totalAmount*CGST)/monetaryUnitFraction);
+    SGSTTotal = (totalAmount*SGST)/monetaryUnitFraction;
+    CGSTTotal = (totalAmount*CGST)/monetaryUnitFraction;
 
-//     TotalAmt = QString::number(SGSTTotal);
+    TotalTax = totalAmount + SGSTTotal + CGSTTotal;
 
     footer = "<tr><th>Ticket Total</th> <td></td> <td></td> <th>"+ QString::number(totalAmount) + "</th> </tr>"
-                  "<tr><td>TAX: CGST</td> <td></td> <td>"+QString::number(SGST)+"%</td> <th>"+ SGSTTotal +"</th> </tr>"
-                  "<tr><td>TAX: SGST</td> <td></td> <td>"+QString::number(CGST)+"%</td> <th> "+ CGSTtotal +" </th> </tr>"
-                  "<tr><th>Total</th> <td></td> <td></td> <th> "+ TotalAmt +"  </th> </tr>"
+                  "<tr><td>TAX: CGST</td> <td></td> <td>"+QString::number(SGST)+"%</td> <th>"+ QString::number(SGSTTotal) +"</th> </tr>"
+                  "<tr><td>TAX: SGST</td> <td></td> <td>"+QString::number(CGST)+"%</td> <th> "+ QString::number(CGSTTotal) +" </th> </tr>"
+                  "<tr><th>Total</th> <td></td> <td></td> <th> "+ QString::number(TotalTax) +"  </th> </tr>"
                   "</table></html>";
     htmlString.append(footer);
 

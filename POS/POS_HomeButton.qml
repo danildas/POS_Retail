@@ -30,7 +30,7 @@ Item {
             GradientStop { position: 1.0; color: "#f2f2f2" }
         }
 
-        border.color: "#47494c"
+        border.color: "#224547"  //"#47494c"
         border.width: 1
 
         Text {

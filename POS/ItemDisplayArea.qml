@@ -1,4 +1,6 @@
 import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
 
 Item {
     id: idRoot
@@ -41,8 +43,8 @@ Item {
         anchors.fill: parent
         radius: 2 // 10
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#ebebec" }
-            GradientStop { position: 1.0; color: "#e3e8ec" }
+            GradientStop { position: 0.0; color: "#3ad0d8" } //"#ebebec" }
+            GradientStop { position: 1.0; color: "#4ad8e0" }//"#e3e8ec" }
         }
 
         border.color: "#d2d4d5"
@@ -50,13 +52,13 @@ Item {
 
 
         Rectangle {
-            color: "#bebfc0"
+            color: "#2a9da3"   //"#bebfc0"
             anchors.fill: idGroupNameText
             anchors.topMargin: 5
         }
 
         Rectangle {
-            color: "#bebfc0"
+            color:  "#2a9da3" //"#bebfc0"
             anchors.top: idItemBackground.top
             anchors.bottom: idGroupNameText.bottom
             anchors.left: idGroupNameText.left
@@ -153,6 +155,9 @@ Item {
         spacing: 5
 
         delegate: idDelegate
+
+        ScrollBar.vertical: ScrollBar { active: true }
+
         /* POS_Button {
             property variant modelData: model
             width: idItemListView.cellWidth - 5
@@ -224,11 +229,11 @@ Item {
             }
             Text {
                 id: idItemPrice
-                text: "₹"+ model.price
+                text: "₹"+ ( model.price / settings.monetaryUnitFraction )
                 anchors {
                     top: idRectangleText.top
-                    right: idRectangleText.right
-                    rightMargin: idItemBackground.width / 10
+                    left: idRectangleText.left
+                    leftMargin: idItemBackground.width / 1.2
                     topMargin: idItemBackground.height / 60
                 }
             }
@@ -239,13 +244,14 @@ Item {
                             idItemListView.currentIndex = index
 
                             taxMaster.getTax();
-                            settings.subtotal = settings.subtotal + model.price
-                            settings.sgst = (settings.subtotal * taxMaster.sgst ) / 100;
-                            settings.cgst = (settings.subtotal * taxMaster.cgst ) / 100;
-                            settings.total = settings.subtotal + settings.sgst + settings.cgst;
+                            settings.subtotal =  settings.subtotal + ( model.price ) / settings.monetaryUnitFraction;
+                            settings.sgst = ( ( settings.subtotal * taxMaster.sgst ) / 100);
+                            settings.cgst = ( ( settings.subtotal * taxMaster.cgst ) / 100);
+                            settings.total = ( settings.subtotal + settings.sgst + settings.cgst );
 
                             taxMaster.getBillNumber();
                             settings.billNo = taxMaster.billNo;
+
                     console.log("total value",settings.subtotal)
                 }
             }

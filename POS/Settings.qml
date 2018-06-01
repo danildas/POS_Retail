@@ -20,6 +20,16 @@ Item {
         height: parent.height
 
         Tab {
+            id: idCostCenterTab
+            title: "Cost Center"
+        }
+
+        Tab {
+            id: idPOSMachineTab
+            title: "POS Machine"
+        }
+
+        Tab {
             id: idGSTTab
             title: "Tax"
 
@@ -120,7 +130,7 @@ Item {
                         }
 
                         Rectangle {
-                            id: idRectangleInside
+                            id: idRectangleInsideTax
                             width: idRectangleTax.width
                             height: idRectangleTax.height/3
                             color: "#E3E8EC"
@@ -137,16 +147,16 @@ Item {
                             Button {
                                 id: idNewButton
                                 anchors{
-                                    top: idRectangleInside.top
+                                    top: idRectangleInsideTax.top
                                     right: idEditButton.left
-                                    topMargin: idRectangleInside.height/6
-                                    rightMargin: idRectangleInside.width/8.5
+                                    topMargin: idRectangleInsideTax.height/6
+                                    rightMargin: idRectangleInsideTax.width/8.5
 
                                 }
                                 background: POS_FunctionButton {
                                     text: "New"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked: {
                                         idTxtFieldSGST.state = "SGST"
                                         idTxtFieldCGST.state = "CGST"
@@ -156,15 +166,15 @@ Item {
                             Button {
                                 id: idEditButton
                                 anchors{
-                                    top: idRectangleInside.top
+                                    top: idRectangleInsideTax.top
                                     right: idDeleteButton.left
-                                    topMargin: idRectangleInside.height/6
-                                   rightMargin: idRectangleInside.width/8.5
+                                    topMargin: idRectangleInsideTax.height/6
+                                   rightMargin: idRectangleInsideTax.width/8.5
                                 }
                                 background: POS_FunctionButton {
                                     text: "Edit"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked: {
                                         idSaveButton.visible = false
                                         idUpdateButton.visible = true
@@ -174,15 +184,15 @@ Item {
                             Button {
                                 id: idDeleteButton
                                 anchors{
-                                    top: idRectangleInside.top
-                                    right: idRectangleInside.right
-                                    rightMargin: idRectangleInside.width/8
-                                    topMargin: idRectangleInside.height/6
+                                    top: idRectangleInsideTax.top
+                                    right: idRectangleInsideTax.right
+                                    rightMargin: idRectangleInsideTax.width/8
+                                    topMargin: idRectangleInsideTax.height/6
                                 }
                                 background: POS_FunctionButton {
                                     text: "Delete"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked: taxMaster.deleteTax()
                                 }
                             }
@@ -191,13 +201,13 @@ Item {
                                 anchors{
                                     top: idEditButton.bottom
                                     right: idSaveButton.left
-                                    topMargin: idRectangleInside.height/4.5
-                                    rightMargin: idRectangleInside.width/8.5
+                                    topMargin: idRectangleInsideTax.height/4.5
+                                    rightMargin: idRectangleInsideTax.width/8.5
                                 }
                                 background: POS_FunctionButton {
                                     text: "Refresh"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked:  { taxMaster.getTax()
                                         idTxtFieldSGST.text = taxMaster.sgst
                                         idTxtFieldCGST.text = taxMaster.cgst
@@ -209,14 +219,14 @@ Item {
                                 id: idSaveButton
                                 anchors{
                                     top: idDeleteButton.bottom
-                                    right: idRectangleInside.right
-                                    topMargin: idRectangleInside.height/4.5
-                                    rightMargin: idRectangleInside.width/8
+                                    right: idRectangleInsideTax.right
+                                    topMargin: idRectangleInsideTax.height/4.5
+                                    rightMargin: idRectangleInsideTax.width/8
                                 }
                                 background: POS_FunctionButton {
                                     text: "Save"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked: { taxMaster.saveTax(idTxtFieldSGST.text,idTxtFieldCGST.text)
                                         idTxtFieldSGST.readOnly = true
                                         idTxtFieldCGST.readOnly = true
@@ -227,15 +237,15 @@ Item {
                                 id: idUpdateButton
                                 anchors{
                                     top: idDeleteButton.bottom
-                                    right: idRectangleInside.right
-                                    topMargin: idRectangleInside.height/4.5
-                                    rightMargin: idRectangleInside.width/8
+                                    right: idRectangleInsideTax.right
+                                    topMargin: idRectangleInsideTax.height/4.5
+                                    rightMargin: idRectangleInsideTax.width/8
                                 }
                                 visible: false
                                 background: POS_FunctionButton {
                                     text: "Update"
-                                    width: idRectangleInside.width/8
-                                    height: idRectangleInside.height/3
+                                    width: idRectangleInsideTax.width/8
+                                    height: idRectangleInsideTax.height/3
                                     onClicked: {
                                         taxMaster.editTax(idTxtFieldSGST.text,idTxtFieldCGST.text)
                                         idSaveButton.visible = false
@@ -248,15 +258,6 @@ Item {
                         }
                 }
             }
-        }
-        Tab {
-            id: idCostCenterTab
-            title: "Cost Center"
-        }
-
-        Tab {
-            id: idPOSMachineTab
-            title: "POS Machine"
         }
 
         Tab {

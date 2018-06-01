@@ -291,9 +291,9 @@ Item {
         anchors.top: idBillSummaryBg.top
         anchors.bottom: idBillArea.bottom
         anchors.rightMargin: 10
-//        anchors.margins: 10
-//        anchors.bottomMargin: 0
     }
+
+
 
 //    PayModesDisplayArea {
 //        anchors.left: idBillArea.right
