@@ -44,12 +44,11 @@ Item {
         radius: 2 // 10
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#3ad0d8" } //"#ebebec" }
-            GradientStop { position: 1.0; color: "#4ad8e0" }//"#e3e8ec" }
+            GradientStop { position: 1.0; color: "#4ad8e0" } //"#e3e8ec" }
         }
 
         border.color: "#d2d4d5"
         border.width: 1
-
 
         Rectangle {
             color: "#2a9da3"   //"#bebfc0"
