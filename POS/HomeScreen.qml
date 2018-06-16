@@ -11,8 +11,8 @@ Item {
     Rectangle {
         id: idBgRect
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#04e6f2" } // c7c9cc
-            GradientStop { position: 1.0; color: "#224547" }  // 47494c
+            GradientStop { position: 0.0; color: "#97b8ed" } //"#04e6f2"  c7c9cc
+            GradientStop { position: 1.0; color: "#35507c" } //"#224547" }  // 47494c
         }
         anchors.fill: parent
 

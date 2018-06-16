@@ -15,7 +15,7 @@ Item {
     Rectangle {
         id: idBillBackground
         radius: 2  // 10
-        color: "#3ad0d8" //"#e3e8ec"
+        color: "#97b8ed" //"#e3e8ec"
         anchors.fill: parent
         border.color: "#d2d4d5"
         border.width: 1
@@ -29,8 +29,8 @@ Item {
         radius: 2 //10
         gradient: Gradient {
             GradientStop { position: 0.0; color: "#ffffff" }
-            GradientStop { position: 0.5; color: "#48dae2" } //"#f0f3f5" }
-            GradientStop { position: 1.0; color: "#46a9af" }//"#e3e8ec" }
+            GradientStop { position: 0.5; color: "#97b8ed" } //"#f0f3f5" }
+            GradientStop { position: 1.0; color: "#35507c" }//"#e3e8ec" }
         }
     }
 
@@ -39,8 +39,8 @@ Item {
         anchors.fill: idBillViewHeader
         anchors.topMargin: idBillViewHeader.height/2
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#13d0db" }//"#f0f3f5"
-            GradientStop { position: 1.0; color: "#46a9af" } //"#e3e8ec"
+            GradientStop { position: 0.0; color: "#97b8ed" }//"#f0f3f5"
+            GradientStop { position: 1.0; color: "#35507c" } //"#e3e8ec"
         }
     }
 
@@ -53,7 +53,7 @@ Item {
         Rectangle {
             width: parent.width
             height: 1
-            color: "#39aeb5"  //"#c9c9ca"
+            color: "#759ddd"  //"#c9c9ca"
             anchors.bottom: parent.bottom
         }
 
@@ -168,7 +168,7 @@ Item {
         ScrollBar.vertical: ScrollBar { active: true }
 
         highlight: Rectangle {
-            color: "#38a4aa" //"#c7c9cc"
+            color: "#8aa9db" //"#c7c9cc"
         }
     }
 

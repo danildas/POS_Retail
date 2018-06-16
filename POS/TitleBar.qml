@@ -17,8 +17,8 @@ Item {
     Rectangle {
         anchors.fill: parent
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#224547" } //47494c
-            GradientStop { position: 1.0; color: "#04e6f2" } //c7c9cc
+            GradientStop { position: 0.0; color: "#35507c" } //47494c
+            GradientStop { position: 1.0; color: "#97b8ed" } //c7c9cc
         }
     }
 

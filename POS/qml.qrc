@@ -23,5 +23,6 @@
         <file>PaymentScreen.qml</file>
         <file>POS_KeypadButton.qml</file>
         <file>Settings.qml</file>
+        <file>SearchItem.qml</file>
     </qresource>
 </RCC>

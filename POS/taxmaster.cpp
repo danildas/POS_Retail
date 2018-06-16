@@ -6,7 +6,32 @@
 
 TaxMaster::TaxMaster(QObject *parent) : QSqlQueryModel (parent)
 {
+    QString query = ("SELECT Code,Name FROM 'ITEM'");
+    this->setQuery(query);
+}
 
+QHash<int, QByteArray>TaxMaster::roleNames() const
+{
+    QHash<int ,QByteArray> roles;
+    roles[Qt::UserRole + 1] = "Code";
+    roles[Qt::UserRole + 2] = "Name";
+    return roles;
+}
+
+QVariant TaxMaster::data(const QModelIndex &index, int role) const
+{
+    QVariant value = QSqlQueryModel::data(index, role);
+    if(role < Qt::UserRole)
+    {
+        value = QSqlQueryModel::data(index, role);
+    }
+    else
+    {
+        int columnIdx = role - Qt::UserRole - 1;
+        QModelIndex modelIndex = this->index(index.row(), columnIdx);
+        value = QSqlQueryModel::data(modelIndex, Qt::DisplayRole);
+    }
+    return value;
 }
 
 bool TaxMaster:: getTax()
@@ -56,6 +81,28 @@ bool TaxMaster:: getBillNumber()
     setBillNo(query.value(0).toInt());
 }
 
+void TaxMaster:: applyfilter(QString name)
+{
+    QSqlQuery query;
+    query.exec("SELECT name FROM 'ITEM' WHERE name like '%"+name+"%'");
+    query.next();
+    setNamefilter(query.value(0).toString());
+    qDebug()<< m_namefilter;
+    return ;
+}
+
+QString TaxMaster::namefilter()
+{
+    return m_namefilter;
+}
+void TaxMaster::setNamefilter(QString namefilter)
+{
+    if(namefilter != m_namefilter)
+    {
+        m_namefilter = namefilter;
+        emit namefilterChanged();
+    }
+}
 
 int TaxMaster:: billNo()
 {

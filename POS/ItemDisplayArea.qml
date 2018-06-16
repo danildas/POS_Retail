@@ -43,21 +43,21 @@ Item {
         anchors.fill: parent
         radius: 2 // 10
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#3ad0d8" } //"#ebebec" }
-            GradientStop { position: 1.0; color: "#4ad8e0" } //"#e3e8ec" }
+            GradientStop { position: 0.0; color: "#97b8ed" } //"#ebebec" }
+            GradientStop { position: 1.0; color: "#97b8ed" } //"#e3e8ec" }
         }
 
         border.color: "#d2d4d5"
         border.width: 1
 
         Rectangle {
-            color: "#2a9da3"   //"#bebfc0"
+            color: "#719add"   //"#bebfc0"
             anchors.fill: idGroupNameText
             anchors.topMargin: 5
         }
 
         Rectangle {
-            color:  "#2a9da3" //"#bebfc0"
+            color:  "#719add" //"#bebfc0"
             anchors.top: idItemBackground.top
             anchors.bottom: idGroupNameText.bottom
             anchors.left: idGroupNameText.left
@@ -152,7 +152,6 @@ Item {
         clip: true
         model: itemModel
         spacing: 5
-
         delegate: idDelegate
 
         ScrollBar.vertical: ScrollBar { active: true }
@@ -206,7 +205,8 @@ Item {
                 // show item units popup
             }
         }
-    }
+
+   }
 
     Component {
         id: idDelegate
@@ -228,7 +228,7 @@ Item {
             }
             Text {
                 id: idItemPrice
-                text: "₹"+ ( model.price / settings.monetaryUnitFraction )
+                text: "₹ "+ ( model.price / settings.monetaryUnitFraction )
                 anchors {
                     top: idRectangleText.top
                     left: idRectangleText.left

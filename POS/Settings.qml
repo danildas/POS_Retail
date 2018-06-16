@@ -811,7 +811,7 @@ Item {
             Rectangle {
                 id:idRectangleGeneralSettings
                 width: idItemGeneralSettings.width
-                height: idItemGeneralSettings.height/1.5
+                height: idItemGeneralSettings.height / 1.5
                 border.color: "#E3E8EC"
                 border.width: 2
                 radius: 5
